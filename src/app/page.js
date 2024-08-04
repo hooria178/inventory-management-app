@@ -8,12 +8,12 @@ export default function Introduction() {
   const [isClicked, setIsClicked] = useState(false);
   const router = useRouter();
 
-  const handleClick = () => {
-    setIsClicked(true);
-    setTimeout(() => {
-      router.push("./dashboard");
-    }, 1000); // Adjust timing to match your animation duration
-  };
+  // const handleClick = () => {
+  //   setIsClicked(true);
+  //   setTimeout(() => {
+  //     router.push("/dashboard");
+  //   }, 1000); // Adjust timing to match your animation duration
+  // };
 
   return (
     <Box
@@ -48,7 +48,7 @@ export default function Introduction() {
         </Typography>
         <Button
           variant="contained"
-          onClick={handleClick}
+          onClick={() => router.push("/dashboard")}
           className={`bungee bubble-button ${isClicked ? "popped" : ""}`}
           sx={{
             backgroundColor: isClicked ? "gray" : "white",
