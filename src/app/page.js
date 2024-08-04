@@ -11,7 +11,7 @@ export default function Introduction() {
   const handleClick = () => {
     setIsClicked(true);
     setTimeout(() => {
-      router.push("./dashboard-copy");
+      router.push("./dashboard");
     }, 1000); // Adjust timing to match your animation duration
   };
 
