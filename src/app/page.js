@@ -1,95 +1,71 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+"use client";
+import { Box, Typography, Button } from "@mui/material";
+import "./introduction.css";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
-export default function Home() {
+export default function Introduction() {
+  const [isClicked, setIsClicked] = useState(false);
+  const router = useRouter();
+
+  const handleClick = () => {
+    setIsClicked(true);
+    setTimeout(() => {
+      router.push("./dashboard-copy");
+    }, 1000); // Adjust timing to match your animation duration
+  };
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+    <Box
+      width="100vw"
+      height="100vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Box
+        width="90%"
+        maxWidth="400px"
+        borders="2px solid #000"
+        boxShadow={0}
+        p={4}
+        display="flex"
+        flexDirection="column"
+        gap={3}
+        sx={{
+          transform: "translate(0, 0)", // No need for translation, centered using flexbox
+        }}
+      >
+        <Typography
+          variant="h1"
+          className="bungee"
+          fontWeight="bold"
+          textAlign="center"
+          marginBottom="20px"
+          sx={{ fontSize: { xs: "2rem", sm: "3rem", md: "10rem" } }} // Responsive font size
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+          Pantry Tracker
+        </Typography>
+        <Button
+          variant="contained"
+          onClick={handleClick}
+          className={`bungee bubble-button ${isClicked ? "popped" : ""}`}
+          sx={{
+            backgroundColor: isClicked ? "gray" : "white",
+            color: isClicked ? "white" : "black",
+            border: "1px solid #ccc",
+            padding: "8px 16px", // Smaller padding for a smaller button
+            fontSize: "10px", // Smaller font size
+            cursor: "pointer",
+            transition: "background-color 0.3s ease",
+            width: "90%", // Full width on small screens
+            maxWidth: "200px", // Smaller max width on larger screens
+            alignSelf: "center", // Center button within box
+          }}
         >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+          Enter
+        </Button>
+      </Box>
+    </Box>
   );
 }

@@ -1,7 +1,11 @@
-import { Inter } from "next/font/google";
+import { Bungee } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const bungee_init = Bungee({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-bungee",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={bungee_init.className}>{children}</body>
     </html>
   );
 }
